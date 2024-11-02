@@ -1,70 +1,56 @@
-<script>
-	import r1 from '../stories/assets/1/1.jpg';
-	import audio1 from '../stories/assets/1/1.m4a';
+<script lang="ts">
+	import Story from '../components/Story.svelte';
+	import Reading from '../components/Reading.svelte';
+	import data from '../data.json';
+	import { getImageById, getAudioById } from '../helpers';
+	const images: Record<string, { default: string }> = import.meta.glob(
+		'/src/stories/assets/*.jpg',
+		{ eager: true }
+	);
+	const audioFiles: Record<string, { default: string }> = import.meta.glob(
+		'/src/stories/assets/*.m4a',
+		{ eager: true }
+	);
 
-	import AudioPlayer from '../components/AudioPlayer.svelte';
-	//autoplay
-
-	const texts = [
-		'Це була тепла, чиста літня ніч.',
-		'Коді, Олло, Сенді, Рея і Пек Зібрались разом щоб подивитись на зірки.',
-		'Тою ніччю повинен був бути метеорний потік.',
-		'Вони всі хотіли побачити падаючи зірки!'
-	];
-
-	const delay = [2000, 4000, 6000, 8000];
-
-	$: highlitedIndex = 0;
-	$: slideIndex = 0;
-
-	delay.forEach((msec, i) => {
-		setTimeout(() => {
-			highlitedIndex = i + 1;
-		}, msec);
-	});
+	$: activeSlideIndex = 0;
 
 	const handleNextClick = () => {
-		slideIndex = 1;
+		++activeSlideIndex;
+	};
+
+	const handlePrevClick = () => {
+		--activeSlideIndex;
 	};
 </script>
 
-<div
-	id="slide0"
-	class="hidden h-screen w-full flex-col justify-between"
-	class:!flex={slideIndex === 0}
+<button
+	class="absolute left-0 top-1 cursor-pointer text-4xl opacity-50 hover:opacity-100 lg:top-1 lg:p-8"
+	on:click={handlePrevClick}>◀</button
 >
-	<div>
-		<img src={r1} alt="" />
-		<div class="p-3 text-2xl">
-			{#each texts as text, i}
-				<p class="pb-3 text-slate-800" class:text-rose-800={highlitedIndex === i}>{text}</p>
-			{/each}
-		</div>
-	</div>
-
-	<div class="flex justify-between p-3">
-		<button disabled>◀</button>
-		<AudioPlayer src={audio1} />
-		<button on:click={handleNextClick}>▶</button>
-	</div>
-</div>
-
-<div
-	id="slide1"
-	class="hidden h-screen w-full flex-col justify-between"
-	class:!flex={slideIndex === 1}
+<button
+	class="absolute right-0 top-1 cursor-pointer text-4xl opacity-50 hover:opacity-100 lg:top-1 lg:p-8"
+	on:click={handleNextClick}>▶</button
 >
-	<div
-		class="flex h-1/3 w-full items-center justify-center bg-cover bg-center"
-		style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('{r1}')"
-	>
-		<p class="text-7xl text-white">Ніч</p>
-	</div>
 
-	<div class="flex justify-between p-3">
-		<button>1</button>
-		<button>2</button>
-		<button>3</button>
-		<button>4</button>
-	</div>
-</div>
+{#each data as slide, i}
+	{#if slide?.slideType === 'story' && i === activeSlideIndex}
+		{#if getImageById(slide.id, images) && getAudioById(slide.id, images)}
+			<Story
+				image={getImageById(slide.id, images)}
+				audio={getAudioById(slide.id, audioFiles)}
+				desc={slide.desc}
+				delay={slide.delay}
+			/>
+		{:else}
+			<p>Image or Audio not found</p>
+		{/if}
+	{/if}
+
+	{#if slide?.slideType === 'reading' && i === activeSlideIndex}
+		<Reading
+			image={getImageById(slide.img, images)}
+			audio={getAudioById(slide.id, audioFiles)}
+			imgAnswers={slide.imgAnswers}
+		/>
+	{/if}
+{/each}

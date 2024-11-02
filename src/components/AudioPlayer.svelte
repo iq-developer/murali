@@ -1,5 +1,5 @@
-<script>
-	let audio;
+<script lang="ts">
+	let audio: HTMLAudioElement;
 	let isPlaying = false;
 
 	function togglePlayPause() {
@@ -11,9 +11,9 @@
 		isPlaying = !isPlaying;
 	}
 
-	import audio1 from '../stories/assets/1/1.m4a';
-
 	export let src;
+
+	console.log('src:', src);
 </script>
 
 <audio bind:this={audio} {src} preload="auto"></audio>
