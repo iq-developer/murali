@@ -10,14 +10,28 @@
 	export let audio = '';
 	export let imgAnswers: string[] = [];
 
-	const handleAnswerClick = (answerIndex: number, isCorrect: boolean) => {
-		console.log('answerIndex:', answerIndex);
-		console.log('isCorrect:', isCorrect);
+	type ImgAnswer = {
+		img: string;
+		alt: string;
+		correct: boolean;
 	};
+
+	type SelectedAnswer = {
+		index: number;
+		isCorrect: boolean;
+	};
+
+	function handleAnswerClick(index: number, isCorrect: boolean) {
+		doesAnswered = true;
+		selectedAnswer = { index, isCorrect };
+	}
+
+	let doesAnswered = false;
+	let selectedAnswer: SelectedAnswer = null;
 </script>
 
 <div
-	class=" absolute left-1/2 top-0 -translate-x-1/2 transform opacity-50 hover:opacity-100 lg:top-8"
+	class="absolute left-1/2 top-0 -translate-x-1/2 transform opacity-50 hover:opacity-100 lg:top-8"
 >
 	<AudioPlayer src={audio} />
 </div>
@@ -31,16 +45,59 @@
 	</div>
 
 	<div class="full flex justify-center">
-		<div class="grid max-w-4xl grid-cols-2 gap-8 md:grid-cols-4">
+		<div class="grid max-w-4xl grid-cols-2 gap-x-8 md:grid-cols-4">
 			{#each imgAnswers as imgAnswer, i}
 				<div class="flex">
-					<button on:click={() => handleAnswerClick(i, imgAnswer.correct)}>
+					<button
+						disabled={doesAnswered}
+						class="relative"
+						on:click={() => handleAnswerClick(i, imgAnswer.correct)}
+					>
 						<img
 							src={getImageById(imgAnswer.img, images)}
 							alt={imgAnswer.alt}
 							width="200"
-							class="rounded-lg border border-4 border-gray-400 hover:border-blue-500 hover:opacity-75"
+							class="rounded-lg border-4 border-gray-400 hover:border-blue-500 hover:opacity-75"
 						/>
+						{#if doesAnswered && selectedAnswer?.index === i}
+							{#if selectedAnswer.isCorrect}
+								<div
+									class="absolute inset-0 flex items-center justify-center bg-green-500 bg-opacity-50"
+								>
+									<svg
+										class="h-48 w-48 text-white"
+										fill="none"
+										stroke="currentColor"
+										viewBox="0 0 24 24"
+										xmlns="http://www.w3.org/2000/svg"
+									>
+										<path
+											stroke-linecap="round"
+											stroke-linejoin="round"
+											stroke-width="3"
+											d="M5 13l4 4L19 7"
+										></path>
+									</svg>
+								</div>
+							{:else}
+								<!-- Red Cross for Incorrect Answer -->
+
+								<div
+									class="absolute inset-0 flex items-center justify-center bg-red-500 bg-opacity-50"
+								>
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										viewBox="0 0 24 24"
+										fill="currentColor"
+										class="h-full w-full text-white"
+									>
+										<path
+											d="M18.364 5.636a1.5 1.5 0 0 0-2.121 0L12 9.879 7.757 5.636a1.5 1.5 0 0 0-2.121 2.121L9.879 12l-4.243 4.243a1.5 1.5 0 0 0 2.121 2.121L12 14.121l4.243 4.243a1.5 1.5 0 0 0 2.121-2.121L14.121 12l4.243-4.243a1.5 1.5 0 0 0 0-2.121z"
+										/>
+									</svg>
+								</div>
+							{/if}
+						{/if}
 					</button>
 				</div>
 			{/each}
