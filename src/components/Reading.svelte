@@ -8,6 +8,7 @@
 
 	export let image: string = '';
 	export let audio = '';
+	export let title: string = '';
 	export let imgAnswers: string[] = [];
 
 	type ImgAnswer = {
@@ -41,7 +42,7 @@
 		class="flex items-center justify-center bg-blue-500 bg-cover bg-top text-2xl text-white"
 		style="background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('{image}')"
 	>
-		<p class="text-7xl text-white">Ніч</p>
+		<p class="text-7xl text-white">{title}</p>
 	</div>
 
 	<div class="full flex justify-center">

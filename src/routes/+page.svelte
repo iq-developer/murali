@@ -50,6 +50,7 @@
 		<Reading
 			image={getImageById(slide.img, images)}
 			audio={getAudioById(slide.id, audioFiles)}
+			title={slide.title}
 			imgAnswers={slide.imgAnswers}
 		/>
 	{/if}

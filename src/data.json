@@ -18,13 +18,39 @@
     ]
   },
   {
-    "id": "r1",
+    "id": "s1r1",
     "slideType": "reading",
     "img": "s1",
+    "title": "Пек",
     "imgAnswers": [
       {
         "img": "r1q1",
-        "alt": "Ніч",
+        "alt": "Ніч"
+      },
+      {
+        "img": "r1q2",
+        "alt": "Пек",
+        "correct": true
+      },
+      {
+        "img": "r1q3",
+        "alt": "Коді"
+      },
+      {
+        "img": "r1q4",
+        "alt": "Сенді"
+      }
+    ]
+  },
+  {
+    "id": "s1r2",
+    "slideType": "reading",
+    "img": "s1",
+    "title": "Луна",
+    "imgAnswers": [
+      {
+        "img": "r1q1",
+        "alt": "Луна",
         "correct": true
       },
       {
@@ -34,6 +60,56 @@
       {
         "img": "r1q3",
         "alt": "Коді"
+      },
+      {
+        "img": "r1q4",
+        "alt": "Сенді"
+      }
+    ]
+  },
+  {
+    "id": "s1r3",
+    "slideType": "reading",
+    "img": "s1",
+    "title": "Жовта",
+    "imgAnswers": [
+      {
+        "img": "r1q1",
+        "alt": "Луна"
+      },
+      {
+        "img": "r1q2",
+        "alt": "Пек"
+      },
+      {
+        "img": "r1q3",
+        "alt": "Коді"
+      },
+      {
+        "img": "r1q4",
+        "alt": "Сенді",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "id": "s1r4",
+    "slideType": "reading",
+    "img": "s1",
+    "title": "Коді",
+    "imgAnswers": [
+      {
+        "img": "r1q1",
+        "alt": "Луна"
+      },
+      {
+        "img": "r1q2",
+        "alt": "Пек"
+      },
+      {
+        "img": "r1q3",
+        "alt": "Коді",
+        "correct": true
       },
       {
         "img": "r1q4",
@@ -60,26 +136,77 @@
     ]
   },
   {
-    "id": "r2",
+    "id": "s2r1",
     "slideType": "reading",
     "img": "s2",
+    "title": "Тістечко",
     "imgAnswers": [
       {
-        "img": "r2q1",
-        "alt": "Ніч",
+        "img": "s2q1",
+        "alt": "Тістечко",
         "correct": true
       },
       {
-        "img": "r2q2",
-        "alt": "Пек"
+        "img": "s2q2",
+        "alt": "Чорниця"
       },
       {
-        "img": "r2q3",
-        "alt": "Коді"
+        "img": "s2q3",
+        "alt": "Лимонад"
       },
       {
-        "img": "r2q4",
-        "alt": "Сенді"
+        "img": "s2q4",
+        "alt": "Кавун"
+      }
+    ]
+  },
+  {
+    "id": "s2r2",
+    "slideType": "reading",
+    "img": "s2",
+    "title": "Кавун",
+    "imgAnswers": [
+      {
+        "img": "s2q1",
+        "alt": "Тістечко"
+      },
+      {
+        "img": "s2q2",
+        "alt": "Чорниця"
+      },
+      {
+        "img": "s2q3",
+        "alt": "Лимонад"
+      },
+      {
+        "img": "s2q4",
+        "alt": "Кавун",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "id": "s2r3",
+    "slideType": "reading",
+    "img": "s2",
+    "title": "Лимонад",
+    "imgAnswers": [
+      {
+        "img": "s2q1",
+        "alt": "Тістечко"
+      },
+      {
+        "img": "s2q2",
+        "alt": "Чорниця"
+      },
+      {
+        "img": "s2q3",
+        "alt": "Лимонад",
+        "correct": true
+      },
+      {
+        "img": "s2q4",
+        "alt": "Кавун"
       }
     ]
   }
