@@ -7,7 +7,5 @@ export function getImageById(id: string, images: Record<string, { default: strin
 
 export function getAudioById(id: string, audioFiles: Record<string, { default: string }>) {
   const audioPath = `/src/stories/assets/${id}.m4a`;
-  console.log('audioPath:', audioPath);
-
   return audioFiles[audioPath]?.default || defaultAudio;
 }

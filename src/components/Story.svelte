@@ -1,6 +1,5 @@
 <script lang="ts">
 	import AudioPlayer from '../components/AudioPlayer.svelte';
-	// autoplay
 
 	export let image = '';
 	export let audio = '';
@@ -11,17 +10,15 @@
 
 	delay.forEach((msec, i) => {
 		setTimeout(() => {
-			console.log('msec:', msec, highlitedIndex);
-
 			highlitedIndex = i + 1;
 		}, msec);
 	});
 </script>
 
 <div
-	class=" absolute left-1/2 top-0 -translate-x-1/2 transform opacity-50 hover:opacity-100 lg:top-8"
+	class="absolute left-1/2 top-0 -translate-x-1/2 transform opacity-50 hover:opacity-100 lg:top-8"
 >
-	<AudioPlayer src={audio} />
+	<AudioPlayer src={audio} autoplay />
 </div>
 
 <div

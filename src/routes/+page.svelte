@@ -21,6 +21,12 @@
 	const handlePrevClick = () => {
 		--activeSlideIndex;
 	};
+
+	const autoNext = (slideDelay: number) => {
+		setTimeout(() => {
+			handleNextClick();
+		}, slideDelay);
+	};
 </script>
 
 <button
@@ -34,7 +40,8 @@
 
 {#each data as slide, i}
 	{#if slide?.slideType === 'story' && i === activeSlideIndex}
-		{#if getImageById(slide.id, images) && getAudioById(slide.id, images)}
+		{#if getImageById(slide.id, images) && getAudioById(slide.id, images) && slide.delay}
+			{autoNext(slide.delay[slide.delay.length - 1] + 1000)}
 			<Story
 				image={getImageById(slide.id, images)}
 				audio={getAudioById(slide.id, audioFiles)}
