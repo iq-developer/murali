@@ -3,6 +3,7 @@
 	import Reading from '../components/Reading.svelte';
 	import data from '../data.json';
 	import { getImageById, getAudioById } from '../helpers';
+
 	const images: Record<string, { default: string }> = import.meta.glob(
 		'/src/stories/assets/*.jpg',
 		{ eager: true }
@@ -27,6 +28,7 @@
 			handleNextClick();
 		}, slideDelay);
 	};
+
 </script>
 
 <button

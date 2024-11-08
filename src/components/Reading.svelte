@@ -9,7 +9,7 @@
 	export let image: string = '';
 	export let audio = '';
 	export let title: string = '';
-	export let imgAnswers: string[] = [];
+	export let imgAnswers: ImgAnswer[] = [];
 
 	type ImgAnswer = {
 		img: string;
@@ -25,6 +25,15 @@
 	function handleAnswerClick(index: number, isCorrect: boolean) {
 		doesAnswered = true;
 		selectedAnswer = { index, isCorrect };
+	}
+
+	function randomizeReplyCards(replyCards: ImgAnswer[]) {
+		for (let i = replyCards.length - 1; i > 0; i--) {
+			const j = Math.floor(Math.random() * (i + 1));
+			[replyCards[i], replyCards[j]] = [replyCards[j], replyCards[i]];
+		}
+
+		return replyCards;
 	}
 
 	let doesAnswered = false;
@@ -47,7 +56,7 @@
 
 	<div class="full flex justify-center">
 		<div class="grid max-w-4xl grid-cols-2 gap-x-8 md:grid-cols-4">
-			{#each imgAnswers as imgAnswer, i}
+			{#each randomizeReplyCards(imgAnswers) as imgAnswer, i}
 				<div class="flex">
 					<button
 						disabled={doesAnswered}
