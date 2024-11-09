@@ -24,11 +24,10 @@
 	};
 
 	const autoNext = (slideDelay: number) => {
-		setTimeout(() => {
-			handleNextClick();
-		}, slideDelay);
+		// setTimeout(() => {
+		// 	handleNextClick();
+		// }, slideDelay);
 	};
-
 </script>
 
 <button

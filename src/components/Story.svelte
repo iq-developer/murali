@@ -13,12 +13,14 @@
 			highlitedIndex = i + 1;
 		}, msec);
 	});
+
+	// <AudioPlayer src={audio} autoplay />
 </script>
 
 <div
 	class="absolute left-1/2 top-0 -translate-x-1/2 transform opacity-50 hover:opacity-100 lg:top-8"
 >
-	<AudioPlayer src={audio} autoplay />
+	<AudioPlayer src={audio} />
 </div>
 
 <div
