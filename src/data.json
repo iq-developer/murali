@@ -93,31 +93,6 @@
     ]
   },
   {
-    "id": "s1r4",
-    "slideType": "reading",
-    "img": "s1",
-    "title": "Коді",
-    "imgAnswers": [
-      {
-        "img": "r1q1",
-        "alt": "Луна"
-      },
-      {
-        "img": "r1q2",
-        "alt": "Пек"
-      },
-      {
-        "img": "r1q3",
-        "alt": "Коді",
-        "correct": true
-      },
-      {
-        "img": "r1q4",
-        "alt": "Сенді"
-      }
-    ]
-  },
-  {
     "id": "s2",
     "slideType": "story",
     "desc": [

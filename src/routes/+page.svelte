@@ -58,7 +58,7 @@
 	{#if slide?.slideType === 'reading' && i === activeSlideIndex}
 		<Reading
 			image={getImageById(slide.img, images)}
-			audio={getAudioById(slide.id, audioFiles)}
+			audio={getAudioById(slide.slideType, audioFiles)}
 			title={slide.title}
 			imgAnswers={slide.imgAnswers}
 		/>

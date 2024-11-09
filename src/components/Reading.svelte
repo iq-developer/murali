@@ -17,10 +17,12 @@
 		correct: boolean;
 	};
 
-	type SelectedAnswer = {
-		index: number;
-		isCorrect: boolean;
-	};
+	type SelectedAnswer =
+		| {
+				index: number;
+				isCorrect: boolean;
+		  }
+		| undefined;
 
 	function handleAnswerClick(index: number, isCorrect: boolean) {
 		doesAnswered = true;
@@ -37,7 +39,7 @@
 	}
 
 	let doesAnswered = false;
-	let selectedAnswer: SelectedAnswer = null;
+	let selectedAnswer: SelectedAnswer;
 </script>
 
 <div
