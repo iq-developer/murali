@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Main from '../components/Main.svelte';
 	import Story from '../components/Story.svelte';
 	import Reading from '../components/Reading.svelte';
 	import data from '../data.json';
@@ -31,6 +32,7 @@
 </script>
 
 <button
+	hidden={activeSlideIndex === 0}
 	class="absolute left-0 top-1 cursor-pointer text-4xl opacity-50 hover:opacity-100 lg:top-1 lg:p-8"
 	on:click={handlePrevClick}>◀</button
 >
@@ -40,6 +42,14 @@
 >
 
 {#each data as slide, i}
+	{#if slide?.slideType === 'main' && i === activeSlideIndex}
+		<Main
+			title={slide.title}
+			subtitle={slide.subtitle}
+			audio={getAudioById(slide.id, audioFiles)}
+		/>
+	{/if}
+
 	{#if slide?.slideType === 'story' && i === activeSlideIndex}
 		{#if getImageById(slide.id, images) && getAudioById(slide.id, images) && slide.delay}
 			{autoNext(slide.delay[slide.delay.length - 1] + 1000)}
