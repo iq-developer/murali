@@ -5,6 +5,8 @@
 	export let audio = '';
 	export let desc: string[] = [];
 	export let delay: number[] = [];
+	export let isPause;
+	export let togglePauseButton;
 
 	$: highlitedIndex = 0;
 
@@ -18,9 +20,9 @@
 </script>
 
 <div
-	class="absolute left-1/2 top-0 -translate-x-1/2 transform opacity-50 hover:opacity-100 lg:top-8"
+	class="absolute left-1/2 top-0 -translate-x-1/2 transform opacity-50 hover:opacity-100 lg:top-8 z-[1]"
 >
-	<AudioPlayer src={audio} />
+	<AudioPlayer src={audio} {isPause} {togglePauseButton}/>
 </div>
 
 <div

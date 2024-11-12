@@ -7,11 +7,24 @@
 		} else {
 			audio.play();
 		}
+		togglePauseButton();
 		isPlaying = !isPlaying;
+	}
+
+	$: {
+		if (!isPause) {
+			audio.play();
+		} else if (isPause && audio) {
+			audio.pause();
+		}
+
+		isPlaying = !isPlaying
 	}
 
 	export let src;
 	export let autoplay = false;
+	export let isPause = true;
+	export let togglePauseButton = () => {};
 
 	let isPlaying = autoplay;
 </script>
