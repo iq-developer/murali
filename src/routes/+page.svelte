@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Main from '../components/Main.svelte';
 	import Story from '../components/Story.svelte';
 	import Reading from '../components/Reading.svelte';
 	import data from '../data.json';
@@ -62,6 +63,14 @@
 >
 
 {#each data as slide, i}
+	{#if slide?.slideType === 'main' && i === activeSlideIndex}
+		<Main
+			title={slide.title}
+			subtitle={slide.subtitle}
+			audio={getAudioById(slide.id, audioFiles)}
+		/>
+	{/if}
+
 	{#if slide?.slideType === 'story' && i === activeSlideIndex}
 		{#if getImageById(slide.id, images) && getAudioById(slide.id, images) && slide.delay}
 			{autoNext(slide.delay[slide.delay.length - 1] + 1000)}

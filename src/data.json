@@ -1,5 +1,11 @@
 [
   {
+    "id": "m1",
+    "slideType": "main",
+    "title": "Читаємо",
+    "subtitle": "разом з Муралі"
+  },
+  {
     "id": "s1",
     "slideType": "story",
     "desc": [
