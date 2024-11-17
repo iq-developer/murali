@@ -75,15 +75,15 @@
 			/>
 
 			<div class="flex absolute left-0 top-0 right-0 w-full h-screen">
-				<!-- svelte-ignore a11y_no_static_element_interactions -->
-				<!-- svelte-ignore a11y_click_events_have_key_events -->
-				<div 
+				<button 
+					aria-label="Arrow left button"
 					class="w-[10%] h-full content-center bg-orange-200 opacity-0 transition-opacity duration-500 hover:opacity-50"
 					on:click={handlePrevClick}
 				>
-					<!-- <div class="w-full text-orange-500 min-[320px]:text-[50px] sm:text-[100px] lg:text-[150px] xl:text-[190px]">{'<'}</div> -->
-					<div class="arrow"></div>
-				</div>
+					<div class="w-0 h-0 m-auto border-l-[18px] border-r-[18px] border-b-[18px] border-solid border-transparent border-b-white 
+					-rotate-90 min-[640px]:border-x-[37px] min-[640px]:border-b-[37px] min-[1280px]:border-x-[50px] min-[1280px]:border-b-[50px]
+					min-[1600px]:border-x-[65px] min-[1600px]:border-b-[65px] min-[2560px]:border-x-[90px] min-[2560px]:border-b-[90px]"></div>
+				</button>
 
 				<!-- svelte-ignore a11y_no_static_element_interactions -->
 				<div 
@@ -93,8 +93,8 @@
 					class:opacity-50={isVisible}
 					class:opacity-0={!isVisible}
 				>
-					<!-- svelte-ignore a11y_consider_explicit_label -->
 					<button
+						aria-label="Pause button"
 						on:click={togglePauseButton} 
 						class="w-[200px] h-[200px]"
 					>
@@ -102,19 +102,20 @@
 							<i class="fa-solid  text-white text-[120px] {isPause 
 								? "fa-caret-up rotate-90"
 								:  "fa-pause"}"
-							></i>
+							>
 						</div>
 					</button>
 				</div>
 
-				<!-- svelte-ignore a11y_no_static_element_interactions -->
-				<!-- svelte-ignore a11y_click_events_have_key_events -->
-				<div 
+				<button 
+					aria-label="Arrow right button"
 					class="w-[10%] h-full content-center opacity-0 bg-orange-200 transition-opacity duration-500 hover:opacity-50"
 					on:click={handleNextClick}
 				>
-					<div class="arrow arrow--right"></div>
-				</div>
+					<div class="w-0 h-0 m-auto border-l-[18px] border-r-[18px] border-b-[18px] border-solid border-transparent border-b-white
+					rotate-90 min-[640px]:border-x-[37px] min-[640px]:border-b-[37px] min-[1280px]:border-x-[50px] min-[1280px]:border-b-[50px]
+					min-[1600px]:border-x-[65px] min-[1600px]:border-b-[65px] min-[2560px]:border-x-[90px] min-[2560px]:border-b-[90px]"></div>
+				</button>
 			</div>
 			
 		{:else}
@@ -131,36 +132,3 @@
 		/>
 	{/if}
 {/each}
-
-<style>
-	.arrow {
-		width: 0;
-		height: 0;
-		border-left: 18px solid transparent;
-		border-right: 18px solid transparent;
-		border-bottom: 18px solid white;
-
-		margin: 0 auto;
-		transform: rotate(-90deg);
-
-		@media screen and (min-width: 640px) {
-			border-width: 0 37px 37px;
-		}
-
-		@media screen and (min-width: 1280px) {
-			border-width: 0 50px 50px;
-		}
-
-		@media screen and (min-width: 1600px) {
-			border-width: 0 65px 65px;
-		}
-
-		@media screen and (min-width: 2560px) {
-			border-width: 0 90px 90px;
-		}
-	}
-
-	.arrow--right {
-		transform: rotate(90deg);
-	}
-</style>
