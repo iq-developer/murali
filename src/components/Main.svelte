@@ -4,7 +4,7 @@
 
 	export let audio = '';
 	export let title: string = 'Reading';
-	export let subtitle: string = 'with Murali"';
+	export let subtitle: string = 'with Murali';
 </script>
 
 <div class="hidden">
